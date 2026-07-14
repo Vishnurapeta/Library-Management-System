@@ -70,20 +70,40 @@ public class LibraryApp {
 
             String choice = scanner.nextLine().trim();
             switch (choice) {
-                case "1" -> viewAllBooks();
-                case "2" -> addBook();
-                case "3" -> updateBook();
-                case "4" -> deleteBook();
-                case "5" -> viewAllMembers();
-                case "6" -> viewAllTransactions();
-                case "7" -> viewOverdueBooks();
-                case "8" -> {
+                case "1":
+                    viewAllBooks();
+                    break;
+                case "2":
+                    addBook();
+                    break;
+                case "3":
+                    updateBook();
+                    break;
+                case "4":
+                    deleteBook();
+                    break;
+                case "5":
+                    viewAllMembers();
+                    break;
+                case "6":
+                    viewAllTransactions();
+                    break;
+                case "7":
+                    viewOverdueBooks();
+                    break;
+                case "8":
                     bookDAO.printBookCountByCategory();
                     transactionDAO.printMostBorrowedBooks();
-                }
-                case "9" -> returnBook();
-                case "0" -> running = false;
-                default -> System.out.println("Invalid choice.");
+                    break;
+                case "9":
+                    returnBook();
+                    break;
+                case "0":
+                    running = false;
+                    break;
+                default:
+                    System.out.println("Invalid choice.");
+                    break;
             }
         }
     }
@@ -103,13 +123,27 @@ public class LibraryApp {
 
             String choice = scanner.nextLine().trim();
             switch (choice) {
-                case "1" -> bookDAO.getAvailableBooks().forEach(System.out::println);
-                case "2" -> searchBooks();
-                case "3" -> borrowBook(member);
-                case "4" -> returnBook();
-                case "5" -> transactionDAO.getTransactionsByMember(member.getMemberId()).forEach(System.out::println);
-                case "0" -> running = false;
-                default -> System.out.println("Invalid choice.");
+                case "1":
+                    bookDAO.getAvailableBooks().forEach(System.out::println);
+                    break;
+                case "2":
+                    searchBooks();
+                    break;
+                case "3":
+                    borrowBook(member);
+                    break;
+                case "4":
+                    returnBook();
+                    break;
+                case "5":
+                    transactionDAO.getTransactionsByMember(member.getMemberId()).forEach(t -> System.out.println(t));
+                    break;
+                case "0":
+                    running = false;
+                    break;
+                default:
+                    System.out.println("Invalid choice.");
+                    break;
             }
         }
     }
@@ -215,7 +249,7 @@ public class LibraryApp {
     }
 
     private static void viewAllTransactions() {
-        transactionDAO.getAllTransactions().forEach(System.out::println);
+        transactionDAO.getAllTransactions().forEach(t -> System.out.println(t));
     }
 
     private static void viewOverdueBooks() {
@@ -223,6 +257,6 @@ public class LibraryApp {
         if (overdue.isEmpty()) {
             System.out.println("No overdue books.");
         }
-        overdue.forEach(System.out::println);
+        overdue.forEach(t -> System.out.println(t));
     }
 }

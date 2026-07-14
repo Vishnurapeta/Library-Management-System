@@ -10,9 +10,9 @@ import java.sql.SQLException;
  */
 public class DBConnection {
 
-    private static final String DB_URL = "jdbc:mysql://localhost:3306/library_db";
+    private static final String DB_URL = "jdbc:mysql://127.0.0.1:3306/library_db?useSSL=false&allowPublicKeyRetrieval=true";
     private static final String DB_USER = "root";
-    private static final String DB_PASSWORD = "root"; // change to your MySQL password
+    private static final String DB_PASSWORD = "root123";
 
     private static Connection connection;
 
